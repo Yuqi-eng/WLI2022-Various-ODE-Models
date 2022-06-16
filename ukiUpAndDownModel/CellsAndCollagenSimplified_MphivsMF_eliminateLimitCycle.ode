@@ -1,0 +1,17 @@
+# Capsular Contraction model for cells and collagen
+# M = myofibroblasts
+# PHI = macrophages
+
+dM/dt = am + beta*phi - dm*M
+dPHI/dt = aphi + a4*(K-G(M))*M -dphi*PHI
+
+# am and aphi are the basal rate of myofibroblast and macrophage influx 
+# dm and dphi are the rates of turnover of the myofibroblasts and macrophages
+
+
+G(M) = (a*M/dc-x0)^n/(C0^n+(a*M/dc-x0)^n)
+
+param am=1, dm=1, aphi=1, dphi=1, dc=1
+param a4=1, a=2, x0=0, C0=2.5, n=5, beta=1, K=1
+@ total=100,dt=0.01,xp=M,yp=PHI,xlo=0,xhi=10,ylo=0,yhi=10
+done
