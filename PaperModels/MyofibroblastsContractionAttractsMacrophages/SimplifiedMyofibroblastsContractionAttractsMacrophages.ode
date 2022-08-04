@@ -1,0 +1,25 @@
+# M_and_Phi.ode.ode
+
+# Phi = macrophages
+# M = myofibroblasts
+
+
+# M's recruit macrophages, that eventually result in more Ms
+# Here this was simplified to a kind of self-positive feedback
+
+Phi'= aphi + a4*E(M)*M - dphi*Phi
+M'= am + beta*Phi - dm*M
+
+E(M)=M^n/(M0^(n+1)+M^(n+1))
+# H is rate of recruitment of cells by M pulling on
+# collagen; collagen assumed proportional to M
+# H is zero for small and very high C and has a local max
+
+
+# parameters
+par aphi=0.5, a4=2, n=4, M0=1.5, beta=1, am=0.1 
+
+param dphi=1, dm=1
+
+@ total=200,dt=0.01,xp=P,yp=M,xlo=0,xhi=4,ylo=0,yhi=4
+done
