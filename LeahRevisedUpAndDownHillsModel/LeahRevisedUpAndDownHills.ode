@@ -10,9 +10,9 @@
 # aphi is macrophage recruitment rate and is correlated with inflammation
 
 dphi/dt = aphi - dphi*phi + a4*E(C)*M
-dF/dt = af+beta*phi - a3*Tr(phi)*F-a2*E(C)*F-df*F
-dM/dt = am+a2*E(C)*F+ a3*Tr(phi)*F-dm*M
-dC/dt = s(M,F) - dc*C
+dF/dt = af + beta*phi - a3*Tr(phi)*F - a2*E(C)*F - df*F
+dM/dt = am + a2*E(C)*F + a3*Tr(phi)*F - dm*M
+dC/dt = a*M + b*F - dc*C
 
 # a1 is the basal rate of myofibroblast influx 
 #(transdifferentiation of fibroblasts into myofibroblasts)
@@ -22,8 +22,7 @@ dC/dt = s(M,F) - dc*C
 # a is the collagen production (stiffening) caused by one cell
 # dm and dc are the rates of turnover of the cells and the collagen
 
-E(C) = (C-x0)^n/(C0^(n+1)+(C-x0)^(n+1))
-s(M,F) = a*M+b*F
+E(C) = C^n/(C0^(n+1)+C^(n+1))
 Tr(phi) = phi^mn/(phi0^mn+phi^mn)
 
 # project onto F null surface and phi nullsurface:
@@ -32,7 +31,7 @@ Tr(phi) = phi^mn/(phi0^mn+phi^mn)
 
 param dphi=1, df=1, dm=1, dc=1
 param aphi=0.5, af=1, beta=1, am=0.1, a=2, b=0.1
-param a2=0, a3=1, n=4, C0=1.5, phi0=1, mn=6, K=1, a4=2, x0=0
+param a2=0, a3=1, n=4, C0=1.5, phi0=1, mn=6, a4=2
 
 @ total=100,dt=0.01,xp=t,yp=C,xlo=0,xhi=100,ylo=0,yhi=20
 done
