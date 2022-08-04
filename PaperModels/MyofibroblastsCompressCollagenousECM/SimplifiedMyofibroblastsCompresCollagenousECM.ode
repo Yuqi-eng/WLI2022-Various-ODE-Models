@@ -12,7 +12,7 @@ G(C)=C^n/(C0^(n+1)+C^(n+1))
 # G is rate of recruitment of cells by M pulling on C
 # G is zero for small and very high C and has a local max
 
-H(C,M)=M^2*C^2/(C1^2+C^2)
+H(C,M)=M^3*C^2/(C1^2+C^2)
 # F(C,M) is rate of collagen density increase due to M
 # M pull and compactify collagen. 
 # This effect makes the C ODE become nonlinear.
