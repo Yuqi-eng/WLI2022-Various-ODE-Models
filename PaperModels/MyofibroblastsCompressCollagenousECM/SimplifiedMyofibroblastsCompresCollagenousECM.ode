@@ -1,0 +1,30 @@
+# leahmodelJune.ode
+# M = cells
+# C = collagen
+
+# M's recruit macrophages, that eventually result in more Ms
+# Here this was simplified to a kind of self-positive feedback
+
+M'= am + a2*G(C)*M - dm*M
+C'= a*M + b*H(C,M) - dc*C
+
+G(C)=C^n/(C0^(n+1)+C^(n+1))
+# G is rate of recruitment of cells by M pulling on C
+# G is zero for small and very high C and has a local max
+
+H(C,M)=M^2*C^2/(C1^2+C^2)
+# F(C,M) is rate of collagen density increase due to M
+# M pull and compactify collagen. 
+# This effect makes the C ODE become nonlinear.
+# However, not sure if this function is reasonable.
+# The effect becomes significant when M is large
+
+
+init M = 0, C = 0
+
+# parameters
+par a=0.2, am=1, n=2, C0=1, a2=1, dm=1, dc=1 
+param b=0.4, M0=2, C1=2
+
+@ total=200,dt=0.01,xp=M,yp=C,xlo=0,xhi=4,ylo=0,yhi=4
+done
